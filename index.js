@@ -56,7 +56,7 @@ function sendRequestFunction(color, mode) {
 }
 
 
-function copyClipboard(event) {
+/* function copyClipboard(event) {
     const innerTextColor = event.target.innerText
     navigator.clipboard.writeText(innerTextColor)
         .then(() => {
@@ -65,4 +65,4 @@ function copyClipboard(event) {
         .catch(err => {
             console.error("Error al copiar: ", err)
         })
-}
+} */
