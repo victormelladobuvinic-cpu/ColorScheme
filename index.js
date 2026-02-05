@@ -40,15 +40,29 @@ function sendRequestFunction(color, mode) {
             .join('')
         
         const colorName = colors
-            .map(color => `<p class="color-name">${color}</p>`)
+            .map(color => `<p class="color-name copy-btn">${color}</p>`)
             .join('')
 
        document.querySelector(".color-scheme").innerHTML = colorScheme 
         document.querySelector(".name-scheme").innerHTML = colorName 
         
+        // Agregar listeners a los botones de copiar recién creados
+        document.querySelectorAll(".copy-btn").forEach(btn => {
+            btn.addEventListener("click", copyClipboard)
+        })
     })
 
     
 }
 
 
+function copyClipboard(event) {
+    const innerTextColor = event.target.innerText
+    navigator.clipboard.writeText(innerTextColor)
+        .then(() => {
+            console.log("Copiado al clipboard: " + innerTextColor)
+        })
+        .catch(err => {
+            console.error("Error al copiar: ", err)
+        })
+}
